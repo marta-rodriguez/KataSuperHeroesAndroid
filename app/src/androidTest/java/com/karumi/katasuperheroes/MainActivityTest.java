@@ -177,7 +177,7 @@ import static org.mockito.Mockito.when;
     for (int i = 0; i < numberOfSuperHeroes; i++) {
       String heroName = "SuperHero - " + i;
       String photo = "https://i.annihil.us/u/prod/marvel/i/mg/9/b0/537bc2375dfb9.jpg";
-      String description = "Hero description "+ i;
+      String description = "Hero description " + i;
       SuperHero superHero = new SuperHero(heroName, photo, avengers, description);
       superHeroes.add(superHero);
       when(repository.getByName(heroName)).thenReturn(superHero);
