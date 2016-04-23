@@ -115,7 +115,7 @@ import static org.mockito.Mockito.when;
 
     for (int i = 0; i < numberOfSuperHeroes; i++) {
       onView(withId(R.id.recycler_view)).perform(RecyclerViewActions.scrollToPosition(i));
-      onView(withText("SuperHero - "+i)).check(matches(isDisplayed()));
+      onView(withText("SuperHero - " + i)).check(matches(isDisplayed()));
     }
   }
 
@@ -163,6 +163,7 @@ import static org.mockito.Mockito.when;
               perform(RecyclerViewActions.actionOnItemAtPosition(superHeroIndex, click()));
 
       SuperHero selectedSuperHero = superHeroes.get(superHeroIndex);
+      //Two different ways to check if the navigation has been done
       intended(hasComponent(SuperHeroDetailActivity.class.getCanonicalName()));
       intended(hasExtra("super_hero_name_key", selectedSuperHero.getName()));
   }
@@ -173,10 +174,10 @@ import static org.mockito.Mockito.when;
 
   private List<SuperHero> givenThereAreSomeSuperHeroes(int numberOfSuperHeroes, boolean avengers) {
     List<SuperHero> superHeroes = new ArrayList<>();
-    for(int i = 0; i < numberOfSuperHeroes; i++) {
-      String heroName = "SuperHero - "+i;
+    for (int i = 0; i < numberOfSuperHeroes; i++) {
+      String heroName = "SuperHero - " + i;
       String photo = "https://i.annihil.us/u/prod/marvel/i/mg/9/b0/537bc2375dfb9.jpg";
-      String description = "Hero description "+i;
+      String description = "Hero description "+ i;
       SuperHero superHero = new SuperHero(heroName, photo, avengers, description);
       superHeroes.add(superHero);
       when(repository.getByName(heroName)).thenReturn(superHero);
